@@ -45,23 +45,22 @@ export default function ContactPage() {
           </div>
 
           {/* Wave down to cream */}
+          <div className="absolute bottom-0 left-0 w-full z-20 leading-none pointer-events-none translate-y-px">
+            <svg 
+              viewBox="0 0 1200 120" 
+              preserveAspectRatio="none" 
+              className="relative block w-full h-10 lg:h-14 fill-cream text-cream stroke-current stroke-[2px]" 
+            >
+              <path 
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" 
+                transform="scale(-1, 1) translate(-1200, 0)" 
+              />
+            </svg>
+          </div>
         </section>
         
         {/* ── CONTACT + FORM (Cream) ── */}
         <section className="relative z-10 bg-cream py-20 lg:py-28 -mt-px">
-          <div className="absolute top-0 left-0 w-full z-20 leading-none pointer-events-none -translate-y-px rotate-180">
-    <svg 
-      viewBox="0 0 1200 120" 
-      preserveAspectRatio="none" 
-      className="relative block w-full h-10 lg:h-14 fill-charcoal text-charcoal stroke-current stroke-[2px]" 
-      style={{ transform: 'translateY(25%)' }}
-    >
-      <path 
-        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" 
-        transform="scale(-1, 1) translate(-1200, 0)" 
-      />
-    </svg>
-  </div>
           <div className="mx-auto grid max-w-6xl gap-12 lg:gap-20 px-6 sm:px-10 lg:grid-cols-2 items-end">
             
             {/* Left — contact info */}

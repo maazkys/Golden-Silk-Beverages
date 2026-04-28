@@ -62,7 +62,7 @@ function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
 
   return (
     <Link 
-      to={`/products#${product.id}`} // <-- Added the #hash dynamically here!
+      to={`/products#${product.id}`}
       className="flex flex-col items-center w-full max-w-100 group cursor-pointer"
       aria-label={`View ${product.name} details`}
     >
@@ -75,7 +75,7 @@ function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
           className="peer h-full w-auto object-contain drop-shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-4 origin-bottom relative z-20"
         />
 
-        {/* Splash Image - Size reduced and moved up significantly (pb-20 and -translate-y-6) */}
+        {/* Splash Image */}
         <div className="absolute inset-0 pointer-events-none flex justify-center items-center z-10 opacity-0 scale-50 transition-all duration-500 ease-out peer-hover:opacity-100 peer-hover:scale-100 peer-hover:-translate-y-30">
           <img
             src={product.splashImg}
@@ -149,11 +149,12 @@ export default function HomePage() {
 
       <div className="overflow-x-hidden font-sans" style={{ minHeight: "100vh", background: "var(--cream)" }}>
 
-{/* ── HERO SCROLL ── */}
-        <section className="relative h-svh min-h-175 w-full bg-(--cream) pt-20 flex flex-col justify-center z-20">
+        {/* ── HERO SCROLL ── */}
+        {/* FIX: Removed fixed svh constraints for mobile, swapped to h-auto with solid padding. Retained md:h-svh md:min-h-175 for desktop. */}
+        <section className="relative h-auto md:h-svh md:min-h-175 w-full bg-(--cream) pt-32 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
           
-          {/* Expanded max-w and removed the massive vw padding so it stretches left */}
-          <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center h-full pb-24">
+          {/* FIX: Inner grid container uses h-auto on mobile instead of h-full */}
+          <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center h-auto md:h-full pb-24 md:pb-24">
             
             {/* TEXT CONTAINER */}
             <div className="flex flex-col items-start justify-center relative z-20 xl:pr-10">
@@ -195,16 +196,16 @@ export default function HomePage() {
         </section>
 
         {/* ── PRODUCT GRID SCROLL ── */}
-        {/* Removed the bottom wave from this section */}
-        <section className="bg-white px-6 relative z-10 min-h-svh flex flex-col justify-center pt-20 pb-20 lg:pt-24 lg:pb-32">
+        {/* FIX: Swapped min-h-svh to h-auto md:min-h-svh to let the container expand around the bottles natively */}
+        <section className="bg-white px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center pt-20 pb-20 lg:pt-24 lg:pb-32">
           <div className="container mx-auto max-w-7xl flex flex-col h-full justify-center relative z-20 pb-12">
             <div className="flex flex-col items-center justify-center text-center mb-10 lg:mb-14 mt-4">
-              <h2 className="font-sans font-black uppercase tracking-tighter text-[clamp(2.2rem,4.5vw,4.5rem)] text-(--charcoal) leading-none">
+              <h2 className="font-sans font-black uppercase tracking-tighter text-[clamp(2.5rem,5vw,5.5rem)] md:text-[clamp(2.2rem,4.5vw,4.5rem)] text-(--charcoal) leading-none">
                 Our lineup.
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 justify-items-center items-end">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-10 lg:gap-8 justify-items-center items-end">
               {PRODUCTS.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
@@ -213,11 +214,10 @@ export default function HomePage() {
         </section>
 
         {/* ── WHY US SECTION ── */}
-        <section className="bg-(--charcoal) px-6 relative z-10 min-h-svh flex flex-col justify-center overflow-hidden py-20 lg:py-24">
+        {/* FIX: Swapped min-h-svh to h-auto md:min-h-svh. Added larger mobile pt-28 and pb-36 padding so the text never collides with the waves! */}
+        <section className="bg-(--charcoal) px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center overflow-hidden pt-28 pb-36 md:py-20 lg:py-24">
           
-          {/* Wave moved here: Positioned at top-0, flipped upside down to drip DOWN into charcoal */}
-          {/* Symmetrical Upward Curve (Arches up in the middle) */}
-<div className="absolute top-0 left-0 w-full z-20 leading-none pointer-events-none -translate-y-px">
+          <div className="absolute top-0 left-0 w-full z-20 leading-none pointer-events-none -translate-y-px">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 lg:h-20 fill-white">
               <path d="M 0,0 L 0,120 C 300,120 400,0 600,0 C 800,0 900,120 1200,120 L 1200,0 Z" />
             </svg>
@@ -243,15 +243,17 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 text-left">
               {WHY_US.map((item, i) => (
                  <div key={i} className="flex flex-col items-start relative group">
-                    <div className="w-14 h-14 relative flex items-center justify-center mb-5">
-                      <div className="absolute inset-0 bg-(--brand-orange) opacity-20 blob-shape transition-all duration-700 group-hover:blob-shape-alt group-hover:scale-110 group-hover:bg-(--brand-green) group-hover:opacity-40"></div>
-                      <span className="font-condensed text-2xl text-(--brand-orange) relative z-10 transition-colors duration-700 group-hover:text-(--brand-green)">
-                        0{i + 1}
-                      </span>
+                    <div className="flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0 mb-2 md:mb-0 w-full">
+                      <div className="w-14 h-14 shrink-0 relative flex items-center justify-center md:mb-5">
+                        <div className="absolute inset-0 bg-(--brand-orange) opacity-20 blob-shape transition-all duration-700 group-hover:blob-shape-alt group-hover:scale-110 group-hover:bg-(--brand-green) group-hover:opacity-40"></div>
+                        <span className="font-condensed text-2xl text-(--brand-orange) relative z-10 transition-colors duration-700 group-hover:text-(--brand-green)">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="font-sans font-bold text-[1.25rem] text-white leading-tight md:mb-2">
+                        {item.title}
+                      </h3>
                     </div>
-                    <h3 className="font-sans font-bold text-[1.25rem] text-white mb-2 leading-tight">
-                      {item.title}
-                    </h3>
                     <p className="font-sans font-normal text-white/70 leading-relaxed text-[1.05rem]">
                       {item.desc}
                     </p>
@@ -302,7 +304,7 @@ export default function HomePage() {
           </div>
 
           <div className="absolute bottom-0 left-0 w-full z-10 leading-none translate-y-1">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-20 fill-(--brand-green)">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8 md:h-20 fill-(--brand-green)">
               <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,115.15,195.4,97.58,239.3,85.6,281.44,71.21,321.39,56.44Z" />
             </svg>
           </div>
@@ -378,7 +380,7 @@ export default function HomePage() {
             </div>
 
             <Link
-              to="/trade"
+              to="/wholesale"
               className="font-sans font-bold text-[0.95rem] text-(--charcoal) transition-transform hover:scale-105"
               style={{
                 display: "inline-flex",

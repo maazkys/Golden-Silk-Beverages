@@ -50,16 +50,16 @@ export default function StoryPage() {
               <span className="text-white/70">a recipe.</span>
             </h1>
           </div>
+          <div className="absolute bottom-0 left-0 w-full z-20 leading-none translate-y-px pointer-events-none">
+            {/* Reduced height (h-6 lg:h-10) to physically flatten the curve */}
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-6 lg:h-10 fill-cream text-cream stroke-current stroke-[2px]">
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,115.15,195.4,97.58,239.3,85.6,281.44,71.21,321.39,56.44Z" />
+            </svg>
+          </div>
         </section>
 
         {/* ── ORIGIN SECTION ── */}
         <section className="relative z-10 flex h-dvh max-h-dvh w-full flex-col items-center justify-center bg-cream pb-24 lg:pb-32 pt-16 lg:pt-24">
-          
-          <div className="absolute -top-0.5 left-0 w-full z-20 leading-none rotate-180">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 lg:h-24 fill-charcoal text-charcoal stroke-current stroke-[2px]">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,115.15,195.4,97.58,239.3,85.6,281.44,71.21,321.39,56.44Z" />
-            </svg>
-          </div>
 
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-[10%] right-[10%] w-[40vw] h-[40vw] bg-[#E87A00] opacity-[0.07] blur-3xl liquid-blob"></div>
@@ -107,7 +107,9 @@ export default function StoryPage() {
         </section>
 
         {/* ── PROCESS SECTION ── */}
-        <section className="relative flex h-dvh max-h-dvh w-full flex-col items-center justify-center bg-charcoal pb-24 lg:pb-32 pt-16 lg:pt-24">
+{/* ── PROCESS SECTION ── */}
+        {/* FIX: Changed to h-auto min-h-dvh on mobile to prevent overflow. Added larger pt-28 and pb-36 padding to safely clear the waves! */}
+        <section className="relative flex h-auto min-h-dvh lg:h-dvh lg:max-h-dvh w-full flex-col items-center justify-center bg-charcoal pb-36 lg:pb-32 pt-28 lg:pt-24">
           
           <div className="absolute -top-0.5 left-0 w-full z-20 leading-none">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 lg:h-24 fill-cream text-cream stroke-current stroke-[2px]">
@@ -177,16 +179,18 @@ export default function StoryPage() {
               ))}
             </div>
           </div>
+          <div className="absolute bottom-0 left-0 w-full z-20 leading-none translate-y-px pointer-events-none">
+            {/* Reduced height (h-8 lg:h-12) to physically flatten the curve */}
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8 lg:h-12 fill-white text-white stroke-current stroke-[2px]">
+               {/* Inverted the path to fill the bottom space with white, matching the section below */}
+               <path d="M 0,120 C 250,120 400,0 650,0 C 900,0 1000,120 1200,120 Z" />
+            </svg>
+          </div>
         </section>
 
         {/* ── INGREDIENTS SECTION ── */}
-        <section className="relative flex h-dvh max-h-dvh w-full flex-col items-center justify-center bg-white pb-24 lg:pb-32 pt-16 lg:pt-24">
-          
-          <div className="absolute -top-0.5 left-0 w-full z-20 leading-none">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 lg:h-24 fill-charcoal text-charcoal stroke-current stroke-[2px]">
-               <path d="M 0,0 L 0,120 C 250,120 400,0 650,0 C 900,0 1000,120 1200,120 L 1200,0 Z" />
-            </svg>
-          </div>
+        {/* FIX: Changed to h-auto min-h-dvh on mobile so it can grow vertically. Added massive pt-32 and pb-40 to clear the top and bottom waves! Desktop naturally snaps back to h-dvh */}
+        <section className="relative flex h-auto min-h-dvh lg:h-dvh lg:max-h-dvh w-full flex-col items-center justify-center bg-white pb-40 lg:pb-32 pt-32 lg:pt-24">
 
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-0 left-[-5%] w-[50vw] h-[50vw] bg-[#207B64] opacity-[0.06] blur-3xl liquid-blob" style={{ animationDelay: '-4s' }}></div>
@@ -254,12 +258,23 @@ export default function StoryPage() {
           </div>
         </section>
 
-        {/* ── PROMISE SECTION ── */}
         <section className="relative flex h-dvh max-h-dvh w-full flex-col items-center justify-center bg-[#207B64] pb-16 lg:pb-20 pt-16 lg:pt-24">
           
-          <div className="absolute -top-0.5 left-0 w-full z-20 leading-none">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 lg:h-24 fill-white text-white stroke-current stroke-[2px]">
-              <path d="M 0,0 L 0,40 C 200,120 400,120 600,60 C 800,0 1000,0 1200,40 L 1200,0 Z" />
+          {/* ── WAVE MOVED BACK TO TOP (With custom gradient matching the blob!) ── */}
+          <div className="absolute -top-0.5 left-0 w-full z-20 leading-none pointer-events-none">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16 lg:h-24">
+              <defs>
+                {/* This gradient perfectly mimics the 6% opacity green blob fading into the white background */}
+                <linearGradient id="waveBlobGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#F2F7F6" />
+                  <stop offset="25%" stopColor="#FFFFFF" />
+                  <stop offset="100%" stopColor="#FFFFFF" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M 0,0 L 0,40 C 200,120 400,120 600,60 C 800,0 1000,0 1200,40 L 1200,0 Z" 
+                fill="url(#waveBlobGrad)" 
+              />
             </svg>
           </div>
 
@@ -268,6 +283,7 @@ export default function StoryPage() {
               Made the way <br/> it should be.
             </h2>
             
+            {/* Original Pill Island Design Restored */}
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
               {["No Preservatives", "No Artificial Flavors", "No Shortcuts", "Small Batch Only"].map((p) => (
                 <div

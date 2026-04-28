@@ -67,7 +67,8 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
   return (
     <section
       id={p.id}
-      className="relative flex h-dvh w-full items-center justify-center overflow-hidden pt-20 lg:pt-28 pb-10"
+      // FIX: Swapped strict h-dvh for h-auto min-h-dvh on mobile so content can stretch naturally. Increased mobile padding to prevent collisions!
+      className="relative flex h-auto min-h-dvh lg:h-dvh w-full items-center justify-center overflow-hidden pt-28 lg:pt-28 pb-24 lg:pb-10"
       style={{ backgroundColor: p.imageSideBg }}
     >
       {/* 1. Background Image Layer */}
@@ -76,7 +77,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
           <img 
             src={p.bgImg} 
             alt="" 
-            className={`h-full object-cover w-full lg:w-auto lg:max-w-none lg:absolute ${
+            className={`object-cover w-full absolute bottom-0 h-[60%] md:h-full md:bottom-auto md:top-0 transition-transform lg:w-auto lg:max-w-none ${
               index % 2 === 0 ? "lg:right-0 lg:object-[35%_center]" : "lg:left-0 lg:object-[65%_center]"
             }`}
           />
@@ -108,10 +109,10 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
         </svg>
       </div>
 
-      {/* 3. Main Content Grid - Reduced outer px slightly so the border wall is closer */}
+      {/* 3. Main Content Grid */}
       <div className="relative z-20 mx-auto grid w-full max-w-450 gap-6 lg:gap-[8vw] xl:gap-[12vw] px-6 sm:px-10 lg:px-[5vw] xl:px-[6vw] lg:grid-cols-2 items-center">
         
-        {/* Text Side - Added pr/pl pushing the text block outward towards the border wall */}
+        {/* Text Side */}
         <div className={`flex flex-col justify-center ${index % 2 === 0 ? "lg:pr-[4vw] xl:pr-[8vw]" : "lg:order-2 lg:pl-[4vw] xl:pl-[8vw]"}`}>
           <span 
             className="font-serif italic font-bold text-[1rem] lg:text-[1.2rem] mb-1 lg:mb-3 block"
@@ -161,7 +162,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
         <div className={`flex flex-col items-center justify-center w-full relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
           
           <div 
-            className="relative h-[45vh] lg:h-[65vh] w-fit perspective-[1000px] z-10 cursor-pointer group" 
+            className="relative h-[38vh] md:h-[45vh] lg:h-[65vh] w-fit perspective-[1000px] z-10 cursor-pointer group" 
             onClick={() => setIsFlipped(!isFlipped)}
           >
             {/* Double-Shadow Effect */}
@@ -194,7 +195,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
 
           <button 
             onClick={() => setIsFlipped(!isFlipped)}
-            className="mt-6 lg:mt-8 font-sans font-bold text-[0.8rem] lg:text-[0.9rem] uppercase tracking-widest transition-all duration-300 bg-charcoal text-white px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:bg-charcoal/90 hover:-translate-y-1 z-20"
+            className="mt-4 md:mt-6 lg:mt-8 mb-4 lg:mb-0 font-sans font-bold text-[0.8rem] lg:text-[0.9rem] uppercase tracking-widest transition-all duration-300 bg-charcoal text-white px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:bg-charcoal/90 hover:-translate-y-1 z-20"
           >
             {isFlipped ? "View Front Label" : "View Nutrition Facts"}
           </button>
@@ -211,7 +212,8 @@ export default function ProductsPage() {
     <div className="bg-cream font-sans overflow-x-hidden">
       <main>
         {/* ── HERO SCROLL ── */}
-        <section className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-charcoal pt-20 lg:pt-28">
+        {/* FIX: Unlocked mobile height (h-auto min-h-dvh) and padded the top and bottom to make it beautifully responsive. */}
+        <section className="relative flex h-auto min-h-dvh lg:h-dvh w-full items-center justify-center overflow-hidden bg-charcoal pt-32 pb-24 lg:pt-28 lg:pb-0">
           
           <div className="absolute inset-0 z-0">
             <img 
@@ -245,8 +247,7 @@ export default function ProductsPage() {
           <ProductSection key={p.id} p={p} index={i} />
         ))}
 
-{/* ── STOCKISTS MAP TEASER ── */}
-        {/* INCREASED TALLNESS: Bumped up the top and bottom clamp padding significantly */}
+        {/* ── STOCKISTS MAP TEASER ── */}
         <section className="relative overflow-hidden bg-[#207B64] pt-[clamp(120px,15vw,180px)] px-[clamp(20px,5vw,80px)] pb-[clamp(160px,20vw,240px)]">
           
           {/* Map SVG background */}
@@ -304,7 +305,6 @@ export default function ProductsPage() {
         </section>
 
         {/* ── NEWSLETTER CTA ── */}
-        {/* INCREASED TALLNESS: Added min-h-[70vh] and bumped up the py-padding */}
         <section className="relative flex flex-col items-center justify-center bg-cream min-h-[70vh] py-32 lg:py-48 px-6">
           <div className="relative z-10 w-full max-w-2xl text-center">
             <span className="font-serif italic font-bold text-[1rem] lg:text-[1.2rem] text-[#207B64] mb-3 block">

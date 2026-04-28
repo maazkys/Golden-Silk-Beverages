@@ -58,9 +58,10 @@ export default function WholesalePage() {
               <span className="font-serif italic font-bold text-[clamp(0.9rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-[clamp(0.5rem,1.5vh,0.75rem)] block">
                 For retailers, restaurants & cafes.
               </span>
-              <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5.5vh,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95] whitespace-nowrap">
+              {/* FIX 1: Changed whitespace-nowrap to md:whitespace-nowrap so text wraps on mobile but stays strict on desktop */}
+              <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5.5vh,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95] md:whitespace-nowrap">
                 Stock the lassi your <br />
-                <span className="text-white/70">customers will <br />come back for.</span>
+                <span className="text-white/70">customers will <br className="md:hidden" />come back for.</span>
               </h1>
               <p className="mx-auto mt-[clamp(0.75rem,2vh,1rem)] max-w-2xl text-[clamp(0.95rem,2vh,1.1rem)] 2xl:text-[1.2rem] font-medium leading-normal text-white/80">
                 Direct from our New Jersey kitchen, shipped refrigerated, nationwide.
@@ -79,20 +80,20 @@ export default function WholesalePage() {
           </div>
 
           {/* Wave Transition to Cream (Middle curving UPWARDS) */}
-{/* Dynamic Organic Liquid Wave (Physically shifted down) */}
-<div className="absolute -bottom-0.5 left-0 w-full z-20 leading-none pointer-events-none">
-  <svg 
-    viewBox="0 0 1200 120" 
-    preserveAspectRatio="none" 
-    className="relative block w-full h-12 lg:h-16 fill-cream"
-    style={{ transform: 'translateY(6%)' }} 
-  >
-    <path 
-      d="M 0,0 L 0,40 C 200,120 400,120 600,60 C 800,0 1000,0 1200,40 L 1200,0 Z" 
-      transform="rotate(180 600 60)" 
-    />
-  </svg>
-</div>
+          {/* Dynamic Organic Liquid Wave (Physically shifted down) */}
+          <div className="absolute -bottom-0.5 left-0 w-full z-20 leading-none pointer-events-none">
+            <svg 
+              viewBox="0 0 1200 120" 
+              preserveAspectRatio="none" 
+              className="relative block w-full h-12 lg:h-16 fill-cream"
+              style={{ transform: 'translateY(6%)' }} 
+            >
+              <path 
+                d="M 0,0 L 0,40 C 200,120 400,120 600,60 C 800,0 1000,0 1200,40 L 1200,0 Z" 
+                transform="rotate(180 600 60)" 
+              />
+            </svg>
+          </div>
         </section>
 
         {/* ── 2. WHY CHOOSE US (Cream) ── */}
@@ -167,10 +168,11 @@ export default function WholesalePage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-white">
                   <thead>
+                    {/* FIX 2: Added min-w on mobile and md:min-w-0 for desktop. This forces horizontal scrolling on phones instead of squishing columns */}
                     <tr className="border-b-2 border-white/20 font-sans font-bold uppercase tracking-widest text-[clamp(0.7rem,1.2vh,0.85rem)] 2xl:text-[0.85rem] text-white/70">
-                      <th className="py-2 font-normal">Volume</th>
-                      <th className="py-2 font-normal">Per Unit</th>
-                      <th className="py-2 font-normal">Notes</th>
+                      <th className="py-2 font-normal min-w-27.5 md:min-w-0">Volume</th>
+                      <th className="py-2 font-normal min-w-27.5 md:min-w-0">Per Unit</th>
+                      <th className="py-2 font-normal min-w-35 md:min-w-0">Notes</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -469,7 +471,6 @@ function Select({ label, name, options }: { label: string; name: string; options
 
       {/* The Premium Floating Menu */}
       {isOpen && (
-        // ADDED: overflow-hidden to perfectly clip the hover states to the rounded corners
         <div className="absolute left-0 top-full z-50 mt-2 w-full overflow-hidden rounded-3xl border border-black/5 bg-white shadow-xl drop-shadow-2xl">
           {options.map((o) => (
             <button
