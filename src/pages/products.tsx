@@ -67,8 +67,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
   return (
     <section
       id={p.id}
-      // FIX: Swapped strict h-dvh for h-auto min-h-dvh on mobile so content can stretch naturally. Increased mobile padding to prevent collisions!
-      className="relative flex h-auto min-h-dvh lg:h-dvh w-full items-center justify-center overflow-hidden pt-28 lg:pt-28 pb-24 lg:pb-10"
+      className="relative flex h-auto w-full items-center justify-center overflow-hidden pt-28 pb-8 lg:h-dvh lg:pt-28 lg:pb-10"
       style={{ backgroundColor: p.imageSideBg }}
     >
       {/* 1. Background Image Layer */}
@@ -162,7 +161,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
         <div className={`flex flex-col items-center justify-center w-full relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
           
           <div 
-            className="relative h-[38vh] md:h-[45vh] lg:h-[65vh] w-fit perspective-[1000px] z-10 cursor-pointer group" 
+            className="relative h-100 sm:h-112.5 lg:h-[65vh] w-fit perspective-[1000px] z-10 cursor-pointer group" 
             onClick={() => setIsFlipped(!isFlipped)}
           >
             {/* Double-Shadow Effect */}
@@ -174,20 +173,20 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
             <div className={`relative h-full transition-transform duration-700 transform-3d z-10 ${isFlipped ? 'transform-[rotateY(180deg)]' : ''}`}>
               
               {/* Front Bottle */}
-              <div className="h-full backface-hidden flex justify-center items-center">
+              <div className="h-full backface-hidden flex justify-center items-start md:items-center pt-2 md:pt-0">
                 <img
                   src={p.bottle}
                   alt={`${p.name} bottle`}
-                  className="h-full w-auto object-contain drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10"
+                  className="h-full w-auto object-contain object-top md:object-center drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
                 />
               </div>
 
               {/* Back Nutrition Label Image */}
-              <div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)] flex justify-center items-center">
+              <div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)] flex justify-center items-start md:items-center pt-2 md:pt-0">
                 <img
                   src={p.nutritionImg}
                   alt={`${p.name} nutrition facts`}
-                  className="h-full w-auto object-contain drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10"
+                  className="h-full w-auto object-contain object-top md:object-center drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
                 />
               </div>
             </div>
@@ -195,7 +194,7 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
 
           <button 
             onClick={() => setIsFlipped(!isFlipped)}
-            className="mt-4 md:mt-6 lg:mt-8 mb-4 lg:mb-0 font-sans font-bold text-[0.8rem] lg:text-[0.9rem] uppercase tracking-widest transition-all duration-300 bg-charcoal text-white px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:bg-charcoal/90 hover:-translate-y-1 z-20"
+            className="mt-8 md:mt-6 lg:mt-8 mb-0 font-sans font-bold text-[0.8rem] lg:text-[0.9rem] uppercase tracking-widest transition-all duration-300 bg-charcoal text-white px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:bg-charcoal/90 hover:-translate-y-1 z-20"
           >
             {isFlipped ? "View Front Label" : "View Nutrition Facts"}
           </button>
@@ -212,8 +211,8 @@ export default function ProductsPage() {
     <div className="bg-cream font-sans overflow-x-hidden">
       <main>
         {/* ── HERO SCROLL ── */}
-        {/* FIX: Unlocked mobile height (h-auto min-h-dvh) and padded the top and bottom to make it beautifully responsive. */}
-        <section className="relative flex h-auto min-h-dvh lg:h-dvh w-full items-center justify-center overflow-hidden bg-charcoal pt-32 pb-24 lg:pt-28 lg:pb-0">
+        {/* FIX: Applied min-h-screen to ensure the section reaches the absolute bottom of the physical mobile display, avoiding the "short/ugly" look without triggering scroll jumps. */}
+        <section className="relative flex h-auto min-h-screen lg:h-screen w-full items-center justify-center overflow-hidden bg-charcoal pt-32 pb-24 lg:pt-28 lg:pb-0">
           
           <div className="absolute inset-0 z-0">
             <img 

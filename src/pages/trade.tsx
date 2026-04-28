@@ -49,8 +49,8 @@ export default function WholesalePage() {
       <main>
         
         {/* ── 1. COMBINED HERO & FEATURES (Charcoal) ── */}
-        {/* Uses vh padding so it dynamically shrinks on shorter laptop screens */}
-        <section className="relative flex h-dvh w-full flex-col items-center justify-center bg-charcoal pt-[clamp(5rem,12vh,8rem)] pb-[clamp(3rem,8vh,5rem)] overflow-hidden">
+        {/* FIX: Swapped strict h-dvh for h-auto min-h-screen lg:min-h-0 lg:h-dvh to prevent URL-bar jump bugs on mobile */}
+        <section className="relative flex h-auto min-h-screen lg:min-h-0 lg:h-dvh w-full flex-col items-center justify-center bg-charcoal pt-[clamp(5rem,12vh,8rem)] pb-[clamp(3rem,8vh,5rem)] overflow-hidden">
           
           <div className="relative z-10 w-full mx-auto max-w-450 px-6 sm:px-10 lg:px-[8vw]">
             
@@ -58,7 +58,6 @@ export default function WholesalePage() {
               <span className="font-serif italic font-bold text-[clamp(0.9rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-[clamp(0.5rem,1.5vh,0.75rem)] block">
                 For retailers, restaurants & cafes.
               </span>
-              {/* FIX 1: Changed whitespace-nowrap to md:whitespace-nowrap so text wraps on mobile but stays strict on desktop */}
               <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5.5vh,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95] md:whitespace-nowrap">
                 Stock the lassi your <br />
                 <span className="text-white/70">customers will <br className="md:hidden" />come back for.</span>
@@ -79,8 +78,6 @@ export default function WholesalePage() {
 
           </div>
 
-          {/* Wave Transition to Cream (Middle curving UPWARDS) */}
-          {/* Dynamic Organic Liquid Wave (Physically shifted down) */}
           <div className="absolute -bottom-0.5 left-0 w-full z-20 leading-none pointer-events-none">
             <svg 
               viewBox="0 0 1200 120" 
@@ -97,7 +94,8 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 2. WHY CHOOSE US (Cream) ── */}
-        <section className="relative z-10 flex min-h-dvh w-full flex-col items-center justify-center bg-cream py-20 lg:py-28 -mt-px">
+        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
+        <section className="relative z-10 flex h-auto w-full flex-col items-center justify-center bg-cream py-20 lg:py-28 -mt-px">
           
           <div className="relative z-10 w-full mx-auto max-w-450 px-6 sm:px-10 lg:px-[8vw]">
             <div className="text-center mb-10 lg:mb-16">
@@ -143,7 +141,6 @@ export default function WholesalePage() {
             </div>
           </div>
 
-          {/* Wave Transition to Green */}
           <div className="absolute bottom-0 left-0 w-full z-20 leading-none translate-y-0.5 pointer-events-none">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 lg:h-14 fill-[#207B64] text-[#207B64] stroke-current stroke-[2px]">
               <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" />
@@ -152,12 +149,14 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 3. PRICING & SHIPPING (Brand Green) ── */}
-        <section id="pricing" className="relative flex min-h-dvh w-full flex-col items-center justify-center bg-[#207B64] py-20 lg:py-28">
+        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
+        <section id="pricing" className="relative flex h-auto w-full flex-col items-center justify-center bg-[#207B64] py-20 lg:py-28">
           
           <div className="relative z-10 w-full mx-auto grid max-w-450 gap-8 lg:gap-16 px-6 sm:px-10 lg:px-[8vw] lg:grid-cols-2 items-center">
             
             {/* Pricing Table */}
-            <div className="flex flex-col justify-center">
+            {/* FIX: Added `min-w-0 w-full` to perfectly bound the grid column, stopping the table from stretching the screen width! */}
+            <div className="flex flex-col justify-center min-w-0 w-full">
               <span className="font-serif italic font-bold text-[clamp(1rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-2 block">
                 The Details
               </span>
@@ -165,10 +164,9 @@ export default function WholesalePage() {
                 Case Pricing
               </h2>
               
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto w-full max-w-full">
                 <table className="w-full text-left text-white">
                   <thead>
-                    {/* FIX 2: Added min-w on mobile and md:min-w-0 for desktop. This forces horizontal scrolling on phones instead of squishing columns */}
                     <tr className="border-b-2 border-white/20 font-sans font-bold uppercase tracking-widest text-[clamp(0.7rem,1.2vh,0.85rem)] 2xl:text-[0.85rem] text-white/70">
                       <th className="py-2 font-normal min-w-27.5 md:min-w-0">Volume</th>
                       <th className="py-2 font-normal min-w-27.5 md:min-w-0">Per Unit</th>
@@ -202,7 +200,8 @@ export default function WholesalePage() {
             </div>
 
             {/* Shipping Box */}
-            <div id="shipping" className="rounded-[1.5rem] 2xl:rounded-[2rem] border border-white/20 bg-white/10 p-6 lg:p-12 backdrop-blur-md drop-shadow-2xl">
+            {/* FIX: Added `min-w-0 w-full` to guarantee this box cannot overflow its grid container. */}
+            <div id="shipping" className="rounded-[1.5rem] 2xl:rounded-[2rem] border border-white/20 bg-white/10 p-6 lg:p-12 backdrop-blur-md drop-shadow-2xl min-w-0 w-full">
               <h3 className="font-sans font-black uppercase text-[clamp(1.5rem,3vh,1.8rem)] 2xl:text-[2rem] text-white">Shipping</h3>
               <p className="mt-4 lg:mt-6 text-[clamp(0.85rem,1.5vh,1rem)] 2xl:text-[1.1rem] font-normal leading-[1.6] text-white/90">
                 We ship nationwide via refrigerated freight. Local NJ, NY, and PA delivery is
@@ -222,7 +221,6 @@ export default function WholesalePage() {
             </div>
           </div>
 
-          {/* Wave Transition to Cream */}
           <div className="absolute bottom-0 left-0 w-full z-20 leading-none translate-y-0.5 pointer-events-none">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 lg:h-14 fill-cream text-cream stroke-current stroke-[2px]">
                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,115.15,195.4,97.58,239.3,85.6,281.44,71.21,321.39,56.44Z" transform="scale(-1, 1) translate(-1200, 0)" />
@@ -231,8 +229,8 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 4. COMPACT INQUIRY FORM (Cream) ── */}
-        {/* Form is heavily mathematically constrained using `vh` so it physically cannot overflow */}
-        <section id="inquiry" className="relative flex min-h-dvh w-full flex-col items-center justify-center bg-cream overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
+        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
+        <section id="inquiry" className="relative flex h-auto w-full flex-col items-center justify-center bg-cream overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
           
           <div className="relative z-10 w-full mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-10">
             <div className="text-center mb-5 lg:mb-8">
@@ -332,7 +330,6 @@ export default function WholesalePage() {
             </div>
           </div>
 
-          {/* Wave Transition to Charcoal */}
           <div className="absolute bottom-0 left-0 w-full z-20 leading-none translate-y-0.5 pointer-events-none">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-10 lg:h-14 fill-charcoal text-charcoal stroke-current stroke-[2px]">
               <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" transform="scale(-1, 1) translate(-1200, 0)" />
@@ -341,7 +338,8 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 5. FAQs (Charcoal) ── */}
-        <section id="faq" className="relative flex h-dvh w-full flex-col items-center justify-center bg-charcoal py-20 lg:py-28">
+        {/* FIX: Swapped h-dvh with fluid h-auto lg:h-dvh */}
+        <section id="faq" className="relative flex h-auto lg:h-dvh w-full flex-col items-center justify-center bg-charcoal py-20 lg:py-28">
           
           <div className="relative z-10 w-full mx-auto max-w-4xl 2xl:max-w-5xl px-6 sm:px-10">
             <div className="text-center mb-[clamp(1rem,4vh,3rem)]">

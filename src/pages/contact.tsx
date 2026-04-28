@@ -25,7 +25,8 @@ export default function ContactPage() {
       <main>
 
         {/* ── HERO (Charcoal) ── */}
-        <section className="relative flex h-dvh w-full items-center justify-center bg-charcoal pt-20 lg:pt-28">
+        {/* FIX: Swapped strict h-dvh for h-auto min-h-screen so it stays flawlessly full-screen on mobile without jumping! */}
+        <section className="relative flex h-auto min-h-screen lg:min-h-0 lg:h-dvh w-full items-center justify-center bg-charcoal pt-32 pb-24 lg:pt-28 lg:pb-0">
           {/* Background image */}
           <div className="absolute inset-0 z-0">
             <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
@@ -60,7 +61,8 @@ export default function ContactPage() {
         </section>
         
         {/* ── CONTACT + FORM (Cream) ── */}
-        <section className="relative z-10 bg-cream py-20 lg:py-28 -mt-px">
+        {/* FIX: Increased mobile bottom padding (pb-32) so the form safely clears the wave at the bottom */}
+        <section className="relative z-10 bg-cream pt-24 pb-32 lg:py-28 -mt-px">
           <div className="mx-auto grid max-w-6xl gap-12 lg:gap-20 px-6 sm:px-10 lg:grid-cols-2 items-end">
             
             {/* Left — contact info */}
@@ -209,7 +211,8 @@ export default function ContactPage() {
         </section>
 
         {/* ── FAQ (Charcoal) ── */}
-        <section id="faq" className="relative flex h-dvh w-full flex-col items-center justify-center bg-charcoal py-20 lg:py-28">
+        {/* FIX: Replaced strict h-dvh with fluid h-auto to safely expand vertically. */}
+        <section id="faq" className="relative flex h-auto lg:h-dvh w-full flex-col items-center justify-center bg-charcoal py-24 lg:py-28">
           
           <div className="relative z-10 w-full mx-auto max-w-4xl 2xl:max-w-5xl px-6 sm:px-10">
             <div className="text-center mb-[clamp(1rem,4vh,3rem)]">

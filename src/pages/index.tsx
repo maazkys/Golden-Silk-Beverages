@@ -150,21 +150,22 @@ export default function HomePage() {
       <div className="overflow-x-hidden font-sans" style={{ minHeight: "100vh", background: "var(--cream)" }}>
 
         {/* ── HERO SCROLL ── */}
-        {/* FIX: Removed fixed svh constraints for mobile, swapped to h-auto with solid padding. Retained md:h-svh md:min-h-175 for desktop. */}
         <section className="relative h-auto md:h-svh md:min-h-175 w-full bg-(--cream) pt-32 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
           
-          {/* FIX: Inner grid container uses h-auto on mobile instead of h-full */}
           <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center h-auto md:h-full pb-24 md:pb-24">
             
             {/* TEXT CONTAINER */}
             <div className="flex flex-col items-start justify-center relative z-20 xl:pr-10">
-              <h1 className="flex flex-col gap-1 lg:gap-2 font-sans font-black uppercase tracking-tighter text-(--charcoal) text-[clamp(2.5rem,5vw,5.5rem)] whitespace-nowrap">
+              
+              {/* FIX: Swapped whitespace-nowrap for md:whitespace-nowrap. Lowered minimum clamp text sizes so it shrinks to fit narrow screens naturally, but allows wrapping as a safe fallback! */}
+              <h1 className="flex flex-col gap-1 lg:gap-2 font-sans font-black uppercase tracking-tighter text-(--charcoal) text-[clamp(2.2rem,10vw,5.5rem)] leading-[1.05] md:whitespace-nowrap">
                 <span>Signature lassi.</span>
-                <span className="font-serif italic font-normal text-[clamp(2rem,3.5vw,4rem)] tracking-normal normal-case text-gray-mid leading-none">
+                <span className="font-serif italic font-normal text-[clamp(1.8rem,8vw,4rem)] tracking-normal normal-case text-gray-mid leading-none py-1 lg:py-0">
                   Made fresh.
                 </span>
                 <span style={{ color: "var(--brand-orange)" }}>Shipped to you.</span>
               </h1>
+              
               <p className="mt-5 max-w-100 text-[1.15rem] font-normal leading-[1.6] text-gray-mid font-sans">
                 12 fl oz bottles. 12g protein. Cultured yogurt, real ingredients, nothing else.
               </p>
@@ -196,7 +197,6 @@ export default function HomePage() {
         </section>
 
         {/* ── PRODUCT GRID SCROLL ── */}
-        {/* FIX: Swapped min-h-svh to h-auto md:min-h-svh to let the container expand around the bottles natively */}
         <section className="bg-white px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center pt-20 pb-20 lg:pt-24 lg:pb-32">
           <div className="container mx-auto max-w-7xl flex flex-col h-full justify-center relative z-20 pb-12">
             <div className="flex flex-col items-center justify-center text-center mb-10 lg:mb-14 mt-4">
@@ -214,7 +214,6 @@ export default function HomePage() {
         </section>
 
         {/* ── WHY US SECTION ── */}
-        {/* FIX: Swapped min-h-svh to h-auto md:min-h-svh. Added larger mobile pt-28 and pb-36 padding so the text never collides with the waves! */}
         <section className="bg-(--charcoal) px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center overflow-hidden pt-28 pb-36 md:py-20 lg:py-24">
           
           <div className="absolute top-0 left-0 w-full z-20 leading-none pointer-events-none -translate-y-px">
