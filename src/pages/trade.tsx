@@ -49,7 +49,6 @@ export default function WholesalePage() {
       <main>
         
         {/* ── 1. COMBINED HERO & FEATURES (Charcoal) ── */}
-        {/* FIX: Swapped strict h-dvh for h-auto min-h-screen lg:min-h-0 lg:h-dvh to prevent URL-bar jump bugs on mobile */}
         <section className="relative flex h-auto min-h-screen lg:min-h-0 lg:h-dvh w-full flex-col items-center justify-center bg-charcoal pt-[clamp(5rem,12vh,8rem)] pb-[clamp(3rem,8vh,5rem)] overflow-hidden">
           
           <div className="relative z-10 w-full mx-auto max-w-450 px-6 sm:px-10 lg:px-[8vw]">
@@ -58,7 +57,8 @@ export default function WholesalePage() {
               <span className="font-serif italic font-bold text-[clamp(0.9rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-[clamp(0.5rem,1.5vh,0.75rem)] block">
                 For retailers, restaurants & cafes.
               </span>
-              <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5.5vh,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95] md:whitespace-nowrap">
+              {/* FIX: Removed md:whitespace-nowrap so text can wrap if needed. Switched vh to vw (5vw) so the text scales responsively to the width of the desktop screen! */}
+              <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5vw,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95]">
                 Stock the lassi your <br />
                 <span className="text-white/70">customers will <br className="md:hidden" />come back for.</span>
               </h1>
@@ -94,7 +94,6 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 2. WHY CHOOSE US (Cream) ── */}
-        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
         <section className="relative z-10 flex h-auto w-full flex-col items-center justify-center bg-cream py-20 lg:py-28 -mt-px">
           
           <div className="relative z-10 w-full mx-auto max-w-450 px-6 sm:px-10 lg:px-[8vw]">
@@ -149,13 +148,11 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 3. PRICING & SHIPPING (Brand Green) ── */}
-        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
         <section id="pricing" className="relative flex h-auto w-full flex-col items-center justify-center bg-[#207B64] py-20 lg:py-28">
           
           <div className="relative z-10 w-full mx-auto grid max-w-450 gap-8 lg:gap-16 px-6 sm:px-10 lg:px-[8vw] lg:grid-cols-2 items-center">
             
             {/* Pricing Table */}
-            {/* FIX: Added `min-w-0 w-full` to perfectly bound the grid column, stopping the table from stretching the screen width! */}
             <div className="flex flex-col justify-center min-w-0 w-full">
               <span className="font-serif italic font-bold text-[clamp(1rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-2 block">
                 The Details
@@ -200,7 +197,6 @@ export default function WholesalePage() {
             </div>
 
             {/* Shipping Box */}
-            {/* FIX: Added `min-w-0 w-full` to guarantee this box cannot overflow its grid container. */}
             <div id="shipping" className="rounded-[1.5rem] 2xl:rounded-[2rem] border border-white/20 bg-white/10 p-6 lg:p-12 backdrop-blur-md drop-shadow-2xl min-w-0 w-full">
               <h3 className="font-sans font-black uppercase text-[clamp(1.5rem,3vh,1.8rem)] 2xl:text-[2rem] text-white">Shipping</h3>
               <p className="mt-4 lg:mt-6 text-[clamp(0.85rem,1.5vh,1rem)] 2xl:text-[1.1rem] font-normal leading-[1.6] text-white/90">
@@ -229,7 +225,6 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 4. COMPACT INQUIRY FORM (Cream) ── */}
-        {/* FIX: Replaced min-h-dvh with fluid h-auto */}
         <section id="inquiry" className="relative flex h-auto w-full flex-col items-center justify-center bg-cream overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32">
           
           <div className="relative z-10 w-full mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-10">
@@ -338,7 +333,6 @@ export default function WholesalePage() {
         </section>
 
         {/* ── 5. FAQs (Charcoal) ── */}
-        {/* FIX: Swapped h-dvh with fluid h-auto lg:h-dvh */}
         <section id="faq" className="relative flex h-auto lg:h-dvh w-full flex-col items-center justify-center bg-charcoal py-20 lg:py-28">
           
           <div className="relative z-10 w-full mx-auto max-w-4xl 2xl:max-w-5xl px-6 sm:px-10">
