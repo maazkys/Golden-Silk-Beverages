@@ -127,8 +127,8 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
           
           <div className="mt-2 lg:mt-3 flex items-center gap-3 font-condensed text-[1rem] lg:text-xl tracking-widest text-charcoal/60">
             <span>12 FL OZ</span>
-            <span className="h-1 w-1 rounded-full bg-charcoal/40"></span>
-            <span>12G PROTEIN</span>
+            {/*<span className="h-1 w-1 rounded-full bg-charcoal/40"></span>*/}
+            {/*<span>12G PROTEIN</span>*/}
           </div>
 
           <p className="mt-4 lg:mt-5 max-w-lg text-[0.95rem] lg:text-[1.1rem] font-normal leading-normal lg:leading-[1.7] text-gray-mid font-sans">
@@ -235,7 +235,7 @@ export default function ProductsPage() {
             </h1>
             
             <p className="mx-auto mt-8 max-w-xl text-[1.1rem] font-medium leading-[1.6] text-white/80">
-              Each bottle is 12 fl oz. Each has 12g of protein. Each is made with cultured
+              Each bottle is 12 fl oz. Each is made with cultured
               yogurt and real ingredients.
             </p>
           </div>

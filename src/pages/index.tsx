@@ -42,9 +42,14 @@ const WHY_US = [
     title: "Real yogurt, real ingredients",
     desc: "No powders, no substitutes. Just cultured yogurt and authentic ingredients.",
   },
+  // FIX: Commented out the protein mention and added a new family recipe point in its place!
+  // {
+  //   title: "12g protein per bottle",
+  //   desc: "A breakfast replacement, a post-workout snack, or just a good drink.",
+  // },
   {
-    title: "12g protein per bottle",
-    desc: "A breakfast replacement, a post-workout snack, or just a good drink.",
+    title: "Authentic family recipe",
+    desc: "Passed down through three generations to bring a true taste of home to every bottle.",
   },
   {
     title: "Made in small batches",
@@ -76,7 +81,6 @@ function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
         />
 
         {/* Splash Image */}
-        {/* FIX: Toned down the translate-y lift so it only gracefully clips the title, and brought the width percentages down to earth! */}
         <div className="absolute inset-0 pointer-events-none flex justify-center items-center z-10 opacity-0 scale-50 transition-all duration-700 ease-out peer-hover:opacity-100 peer-hover:scale-100 peer-hover:-translate-y-24 lg:peer-hover:-translate-y-28 xl:peer-hover:-translate-y-32">
           <img
             src={product.splashImg}
@@ -151,7 +155,7 @@ export default function HomePage() {
       <div className="overflow-x-hidden font-sans" style={{ minHeight: "100vh", background: "var(--cream)" }}>
 
         {/* ── HERO SCROLL ── */}
-        <section className="relative h-auto min-h-screen md:min-h-[45rem] md:h-screen w-full bg-(--cream) pt-24 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
+        <section className="relative h-auto min-h-screen md:min-h-180 md:h-screen w-full bg-(--cream) pt-24 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
           
           <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center h-auto md:h-full pb-16 md:pb-24">
             
@@ -167,7 +171,7 @@ export default function HomePage() {
               </h1>
               
               <p className="mt-5 max-w-100 text-[1.15rem] font-normal leading-[1.6] text-gray-mid font-sans">
-                12 fl oz bottles. 12g protein. Cultured yogurt, real ingredients, nothing else.
+                Cultured yogurt, real ingredients, nothing else.
               </p>
             </div>
 

@@ -57,7 +57,6 @@ export default function WholesalePage() {
               <span className="font-serif italic font-bold text-[clamp(0.9rem,2vh,1.2rem)] 2xl:text-[1.3rem] text-[#E87A00] mb-[clamp(0.5rem,1.5vh,0.75rem)] block">
                 For retailers, restaurants & cafes.
               </span>
-              {/* FIX: Removed md:whitespace-nowrap so text can wrap if needed. Switched vh to vw (5vw) so the text scales responsively to the width of the desktop screen! */}
               <h1 className="font-sans font-black uppercase tracking-tighter text-[clamp(2rem,5vw,4.5rem)] 2xl:text-[5.5rem] text-white leading-[0.95]">
                 Stock the lassi your <br />
                 <span className="text-white/70">customers will <br className="md:hidden" />come back for.</span>
@@ -116,9 +115,14 @@ export default function WholesalePage() {
                   t: "Clean Label",
                   b: "No artificial additives. Gluten-free. Appeals to health-conscious shoppers.",
                 },
+                // FIX: Commented out the protein mention and swapped it for the Authentic Family Recipe point!
+                // {
+                //   t: "12g Protein",
+                //   b: "An ideal grab-and-go breakfast replacement or post-workout drink.",
+                // },
                 {
-                  t: "12g Protein",
-                  b: "An ideal grab-and-go breakfast replacement or post-workout drink.",
+                  t: "Authentic Family Recipe",
+                  b: "Passed down through three generations to bring a true taste of home to every bottle.",
                 },
                 {
                   t: "Direct Relationship",
