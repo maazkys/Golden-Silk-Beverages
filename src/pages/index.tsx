@@ -63,7 +63,7 @@ function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
   return (
     <Link 
       to={`/products#${product.id}`}
-      className="flex flex-col items-center w-full max-w-100 group cursor-pointer"
+      className="flex flex-col items-center w-full max-w-100 group cursor-pointer relative z-20"
       aria-label={`View ${product.name} details`}
     >
       <div className="relative w-full h-[60vh] min-h-95 max-h-137.5 mb-6 flex justify-center items-end pb-2">
@@ -76,11 +76,12 @@ function ProductCard({ product }: { product: typeof PRODUCTS[0] }) {
         />
 
         {/* Splash Image */}
-        <div className="absolute inset-0 pointer-events-none flex justify-center items-center z-10 opacity-0 scale-50 transition-all duration-500 ease-out peer-hover:opacity-100 peer-hover:scale-100 peer-hover:-translate-y-30">
+        {/* FIX: Toned down the translate-y lift so it only gracefully clips the title, and brought the width percentages down to earth! */}
+        <div className="absolute inset-0 pointer-events-none flex justify-center items-center z-10 opacity-0 scale-50 transition-all duration-700 ease-out peer-hover:opacity-100 peer-hover:scale-100 peer-hover:-translate-y-24 lg:peer-hover:-translate-y-28 xl:peer-hover:-translate-y-32">
           <img
             src={product.splashImg}
             alt=""
-            className="w-[150%] max-w-120 h-auto object-contain"
+            className="w-[130%] md:w-[140%] xl:w-[150%] max-w-none h-auto object-contain"
           />
         </div>
 
@@ -150,14 +151,13 @@ export default function HomePage() {
       <div className="overflow-x-hidden font-sans" style={{ minHeight: "100vh", background: "var(--cream)" }}>
 
         {/* ── HERO SCROLL ── */}
-        <section className="relative h-auto md:h-svh md:min-h-175 w-full bg-(--cream) pt-32 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
+        <section className="relative h-auto min-h-screen md:min-h-[45rem] md:h-screen w-full bg-(--cream) pt-24 pb-20 md:pt-20 md:pb-0 flex flex-col justify-center z-20">
           
-          <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center h-auto md:h-full pb-24 md:pb-24">
+          <div className="w-full max-w-480 mx-auto px-6 lg:px-12 xl:px-12 relative z-30 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center h-auto md:h-full pb-16 md:pb-24">
             
             {/* TEXT CONTAINER */}
             <div className="flex flex-col items-start justify-center relative z-20 xl:pr-10">
               
-              {/* FIX: Swapped whitespace-nowrap for md:whitespace-nowrap. Lowered minimum clamp text sizes so it shrinks to fit narrow screens naturally, but allows wrapping as a safe fallback! */}
               <h1 className="flex flex-col gap-1 lg:gap-2 font-sans font-black uppercase tracking-tighter text-(--charcoal) text-[clamp(2.2rem,10vw,5.5rem)] leading-[1.05] md:whitespace-nowrap">
                 <span>Signature lassi.</span>
                 <span className="font-serif italic font-normal text-[clamp(1.8rem,8vw,4rem)] tracking-normal normal-case text-gray-mid leading-none py-1 lg:py-0">
@@ -171,7 +171,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="relative h-[50vh] lg:h-[80vh] w-full flex items-center justify-center pointer-events-none z-40">
+            <div className="relative h-[45vh] lg:h-[80vh] w-full flex items-center justify-center pointer-events-none z-40">
               <img
                 src={allBottle}
                 alt="Our Lassi Lineup"
@@ -197,15 +197,15 @@ export default function HomePage() {
         </section>
 
         {/* ── PRODUCT GRID SCROLL ── */}
-        <section className="bg-white px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center pt-20 pb-20 lg:pt-24 lg:pb-32">
+        <section className="bg-white px-6 relative z-10 h-auto md:min-h-screen flex flex-col justify-center pt-20 pb-20 lg:pt-24 lg:pb-32">
           <div className="container mx-auto max-w-7xl flex flex-col h-full justify-center relative z-20 pb-12">
-            <div className="flex flex-col items-center justify-center text-center mb-10 lg:mb-14 mt-4">
+            <div className="flex flex-col items-center justify-center text-center mb-10 lg:mb-14 mt-4 relative z-10">
               <h2 className="font-sans font-black uppercase tracking-tighter text-[clamp(2.5rem,5vw,5.5rem)] md:text-[clamp(2.2rem,4.5vw,4.5rem)] text-(--charcoal) leading-none">
                 Our lineup.
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-10 lg:gap-8 justify-items-center items-end">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-10 lg:gap-8 justify-items-center items-end relative z-20">
               {PRODUCTS.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
@@ -214,7 +214,7 @@ export default function HomePage() {
         </section>
 
         {/* ── WHY US SECTION ── */}
-        <section className="bg-(--charcoal) px-6 relative z-10 h-auto md:min-h-svh flex flex-col justify-center overflow-hidden pt-28 pb-36 md:py-20 lg:py-24">
+        <section className="bg-(--charcoal) px-6 relative z-10 h-auto md:min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-36 md:py-20 lg:py-24">
           
           <div className="absolute top-0 left-0 w-full z-20 leading-none pointer-events-none -translate-y-px">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-14 lg:h-20 fill-white">
