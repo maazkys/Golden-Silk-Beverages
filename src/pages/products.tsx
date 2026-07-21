@@ -173,20 +173,30 @@ function ProductSection({ p, index }: { p: typeof PRODUCTS[0]; index: number }) 
             <div className={`relative h-full transition-transform duration-700 transform-3d z-10 ${isFlipped ? 'transform-[rotateY(180deg)]' : ''}`}>
               
               {/* Front Bottle */}
-              <div className="h-full backface-hidden flex justify-center items-start md:items-center pt-2 md:pt-0">
+              <div 
+                className="h-full flex justify-center items-start md:items-center pt-2 md:pt-0"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+              >
                 <img
                   src={p.bottle}
                   alt={`${p.name} bottle`}
-                  className="h-full w-auto object-contain object-top md:object-center drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
+                  /* Removed drop-shadow-xl, added translateZ(0) to force GPU acceleration cleanly */
+                  className="h-full w-auto object-contain object-top md:object-center transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
+                  style={{ transform: "translateZ(0)" }}
                 />
               </div>
 
               {/* Back Nutrition Label Image */}
-              <div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)] flex justify-center items-start md:items-center pt-2 md:pt-0">
+              <div 
+                className="absolute inset-0 transform-[rotateY(180deg)] flex justify-center items-start md:items-center pt-2 md:pt-0"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+              >
                 <img
                   src={p.nutritionImg}
                   alt={`${p.name} nutrition facts`}
-                  className="h-full w-auto object-contain object-top md:object-center drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
+                  /* Removed drop-shadow-xl, added translateZ(0) */
+                  className="h-full w-auto object-contain object-top md:object-center transition-transform duration-500 group-hover:-translate-y-4 relative z-10 scale-110 md:scale-100"
+                  style={{ transform: "translateZ(0)" }}
                 />
               </div>
             </div>
