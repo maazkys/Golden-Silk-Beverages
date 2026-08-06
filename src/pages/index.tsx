@@ -8,6 +8,7 @@ import saltBottleBg from "../assets/salt-bottle-bg.webp";
 import allBottle from "../assets/hero1.webp";
 import storyBg from "../assets/story-bg.webp"; 
 import heroBg from "../assets/hero.webp"; 
+import StoreMap from '../components/StoreMap'; // Adjust the import path
 
 // Splash Images
 import orangeSplash from "../assets/orange-splash.webp";
@@ -356,31 +357,7 @@ export default function HomePage() {
               Available at select South Asian grocery stores across New York, New Jersey, and the surrounding areas.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 12,
-                justifyContent: "center",
-                marginBottom: 48,
-              }}
-            >
-              {["Patel Brothers", "Edison Sweet Mart", "Namaste Plaza", "Subzi Mandi", "Apna Bazar"].map((store) => (
-                <span
-                  key={store}
-                  className="font-sans font-semibold text-[0.875rem] text-(--charcoal)"
-                  style={{
-                    background: "rgba(255,255,255,0.95)",
-                    border: "1px solid rgba(255,255,255,1)",
-                    boxShadow: "0 4px 14px rgba(0,0,0,0.1)",
-                    borderRadius: 999,
-                    padding: "10px 20px",
-                  }}
-                >
-                  {store}
-                </span>
-              ))}
-            </div>
+            <StoreMap />
 
             <Link
               to="/wholesale"

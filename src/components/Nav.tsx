@@ -43,7 +43,8 @@ export default function Nav() {
 
         .nav-link-idle {
           font-family: 'Montserrat', sans-serif;
-          font-size: 0.74rem;
+          /* Increased font size */
+          font-size: 0.85rem; 
           font-weight: 900;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -56,7 +57,8 @@ export default function Nav() {
 
         .nav-link-active {
           font-family: 'Montserrat', sans-serif;
-          font-size: 0.74rem;
+          /* Increased font size */
+          font-size: 0.85rem; 
           font-weight: 900;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -67,17 +69,18 @@ export default function Nav() {
 
         .ws-btn {
           font-family: 'Montserrat', sans-serif;
-          font-size: 0.72rem;
+          /* Increased font size */
+          font-size: 0.8rem; 
           font-weight: 900;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: #FAF6EE;
           background: #207B64;
           border-radius: 9999px;
-          padding: 0.55rem 1.4rem;
+          padding: 0.65rem 1.6rem; /* Slightly more padding */
           text-decoration: none;
           white-space: nowrap;
-          transform: translateY(0); /* FIX: Gives the button a stable base so it doesn't jump on load */
+          transform: translateY(0); 
           transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
           box-shadow: 0 2px 10px rgba(32,123,100,0.3);
           flex-shrink: 0;
@@ -90,17 +93,28 @@ export default function Nav() {
           transform: translateY(-1px);
           box-shadow: 0 5px 18px rgba(32,123,100,0.35);
         }
+
+        /* Target mobile specifically to retain original smaller text sizes */
+        @media (max-width: 767px) {
+          .nav-link-idle, .nav-link-active {
+            font-size: 0.74rem;
+          }
+          .ws-btn {
+            font-size: 0.72rem;
+            padding: 0.55rem 1.4rem;
+          }
+        }
       `}</style>
 
       {/* Fixed header */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-2 px-4 pointer-events-none">
         
-        {/* The island pill */}
-        <div className={`nav-island relative flex items-center justify-between w-full max-w-344 h-13 pl-4 pr-3 pointer-events-auto ${scrolled ? "nav-island-scrolled" : "nav-island-top"}`}>
+        {/* The island pill - added md:h-16 to make taller on desktop */}
+        <div className={`nav-island relative flex items-center justify-between w-full max-w-344 h-13 md:h-16 pl-4 pr-3 pointer-events-auto ${scrolled ? "nav-island-scrolled" : "nav-island-top"}`}>
           
-          {/* Logo */}
+          {/* Logo - added md:h-[3.2rem] for desktop */}
           <Link to="/" aria-label="Golden Silk Beverages" className="flex items-center shrink-0 z-20">
-            <img src={logo} alt="Golden Silk Beverages" className="h-[2.6rem] w-auto" />
+            <img src={logo} alt="Golden Silk Beverages" className="h-[2.6rem] md:h-[3.2rem] w-auto" />
           </Link>
 
           {/* Nav links — Desktop only */}
@@ -157,7 +171,6 @@ export default function Nav() {
                 onClick={() => setOpen(false)}
               />
               
-              {/* FIX: Removed the conflicting transition-all and transform classes that caused the layout jumping on mount */}
               {/* The Dropdown Card */}
               <div className="absolute top-[120%] right-0 z-50 w-56 rounded-4xl bg-[#FAF6EE] shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-[#1C1C1C]/5 p-5 flex flex-col gap-5 md:hidden">
                 <nav className="flex flex-col gap-4">

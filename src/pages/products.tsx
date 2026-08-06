@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import StoreMap from '../components/StoreMap'; // Adjust the import path
+
 
 // Bottle Images
 import mangoBottleBg from "../assets/mango-bottle-bg.webp";
@@ -285,17 +287,8 @@ export default function ProductsPage() {
             <p className="font-sans font-light text-[1.05rem] text-white/90 mb-10 max-w-275 mx-auto mt-4">
               Available at select South Asian grocery stores across New York, New Jersey, and the surrounding areas.
             </p>
-
-            <div className="flex flex-wrap gap-3 justify-center mb-12">
-              {["Patel Brothers", "Edison Sweet Mart", "Namaste Plaza", "Subzi Mandi", "Apna Bazar"].map((store) => (
-                <span
-                  key={store}
-                  className="font-sans font-semibold text-[0.875rem] text-[#1C1C1C] bg-white/95 border border-white rounded-full px-5 py-2.5 shadow-[0_4px_14px_rgba(0,0,0,0.1)]"
-                >
-                  {store}
-                </span>
-              ))}
-            </div>
+            <StoreMap />
+            
 
             <Link
               to="/wholesale"
