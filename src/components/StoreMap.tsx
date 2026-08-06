@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap, CircleMarker } from 'react-leaflet';
+import { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -132,7 +132,7 @@ function FindNearMe() {
     });
 
     // If the user denies permission or it fails
-    map.on('locationerror', (e) => {
+    map.on('locationerror', () => {
       alert("Could not access your location. Please check your browser permissions.");
     });
   }, [map]);
